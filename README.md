@@ -3,9 +3,16 @@
 [![N|Solid](https://video.oznoz.com/media/brands/property_logo/1421940829_S1_AlienMonkeys_logo.png)]()
 
 
+
 #### Installation
 
 `$ npm i data-tracer`
+
+
+##### Instantiate
+
+`Audit.addTracer('mongoose', { connectionString: 'mongodb://localhost:27017/ashwin' })`
+
 
 ##### Import 
 
@@ -14,7 +21,7 @@
 
 ##### Sample usage
 
-`
+
 
     Audit.logEvent(
         'INFO',
@@ -34,7 +41,7 @@
             ]
         }
     )
-`
+
 
 ----------
     

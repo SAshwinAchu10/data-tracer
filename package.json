@@ -1,7 +1,7 @@
 {
   "name": "data-tracer",
   "description": "Event tracer, Logger and more WIP",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "keywords": [
     "node",
     "logger",
@@ -25,7 +25,7 @@
   "bugs": {
     "url": "https://github.com/SAshwinAchu10/data-tracer/issues"
   },
-  "homepage": "https://github.com/SAshwinAchu10/data-tracer#readme",
+  "homepage": "https://github.com/SAshwinAchu10/data-tracer",
   "directories": {
     "lib": "lib"
   },
