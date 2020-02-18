@@ -71,4 +71,4 @@ let Audit = require('data-tracer');
  ### Screenshot
 
 
-[![N|Solid](https://github.com/SAshwinAchu10/data-tracer/tree/master/docs/1.png)]()
+[![N|Solid](https://github.com/SAshwinAchu10/data-tracer/blob/master/docs/1.png)]()
