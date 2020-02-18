@@ -16,13 +16,29 @@ Audit.addTracer('mongoose', { connectionString: 'mongodb://localhost:27017/ashwi
 ```
 
 ##### Import 
-
 ```javascript
 let Audit = require('data-tracer');
 ```
 
 ##### Sample usage
 
+###### Definition
+
+```javascript
+    Audit.logEvent(
+        severity,
+        what,
+        subject,
+        status,
+        who,
+        where,
+        why,
+        type,
+        meta
+    );
+```
+
+###### Example
 
 ```javascript
     Audit.logEvent(
