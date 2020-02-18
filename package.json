@@ -1,7 +1,7 @@
 {
   "name": "data-tracer",
-  "description": "Node Audit Logging",
-  "version": "0.0.1",
+  "description": "Event tracer, Logger and more WIP",
+  "version": "0.0.2",
   "keywords": [
     "node",
     "logger",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SAshwinAchu10/audit-logger.git"
+    "url": "git+https://github.com/SAshwinAchu10/data-tracer.git"
   },
   "author": "Ashwin <achu10@live.in>",
   "main": "index",
@@ -23,9 +23,9 @@
     "node": "*"
   },
   "bugs": {
-    "url": "https://github.com/SAshwinAchu10/audit-logger/issues"
+    "url": "https://github.com/SAshwinAchu10/data-tracer/issues"
   },
-  "homepage": "https://github.com/SAshwinAchu10/audit-logger#readme",
+  "homepage": "https://github.com/SAshwinAchu10/data-tracer#readme",
   "directories": {
     "lib": "lib"
   },
