@@ -3,26 +3,28 @@
 [![N|Solid](https://video.oznoz.com/media/brands/property_logo/1421940829_S1_AlienMonkeys_logo.png)]()
 
 
-
 #### Installation
 
-`$ npm i data-tracer`
-
+```javascript
+$ npm i data-tracer
+```
 
 ##### Instantiate
 
-`Audit.addTracer('mongoose', { connectionString: 'mongodb://localhost:27017/ashwin' })`
-
+```javascript
+Audit.addTracer('mongoose', { connectionString: 'mongodb://localhost:27017/ashwin' });
+```
 
 ##### Import 
 
-`let Audit = require('data-tracer')`
-
+```javascript
+let Audit = require('data-tracer');
+```
 
 ##### Sample usage
 
 
-
+```javascript
     Audit.logEvent(
         'INFO',
         'Ping',
@@ -41,13 +43,10 @@
             ]
         }
     )
-
-
+```
 ----------
     
 ### Examples
  * [Javascript Example](https://github.com/SAshwinAchu10/data-tracer/tree/master/examples/javascript) 
-
  * [Typescript Example](https://github.com/SAshwinAchu10/data-tracer/tree/master/examples/typescript)
-
  * [ReactJS Example](https://github.com/SAshwinAchu10/data-tracer/tree/master/examples/react)
