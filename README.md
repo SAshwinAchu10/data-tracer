@@ -12,7 +12,7 @@ $ npm i data-tracer
 ##### Instantiate
 
 ```javascript
-Audit.addTracer('mongoose', { connectionString: 'mongodb://localhost:27017/ashwin' });
+Audit.addTracer('mongoose', { connectionString: 'mongodb://localhost:27017/db' });
 ```
 
 ##### Import 
