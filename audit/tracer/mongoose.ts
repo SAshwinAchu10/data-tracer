@@ -2,9 +2,6 @@ import { Schema } from 'mongoose';
 import * as mongoose from 'mongoose';
 import * as util from 'util';
 
-
-
-
 /**
  * 
  */
@@ -41,9 +38,10 @@ class MongooseTracker {
 
     }
 
-
-
-
+    /**
+     * 
+     * @param dataObject 
+     */
     emit(dataObject: any) {
         console.error('emit: ' + util.inspect(dataObject));
 

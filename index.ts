@@ -6,23 +6,42 @@ let _tracers: any = [];
 
 class Audit {
 
+    /**
+     * 
+     * @param tracer 
+     * @param options 
+     */
     addTracer(tracer: any, options: any) {
         options = options || {};
 
-        // let myTrack = require('./audit/tracer/' + tracer);
-        // var MongooseTracker = require(`./audit/tracer/${tracer}`)
-        if (tracer) {
+        if (tracer == 'mongoose') {
             _tracers.push(new MongooseTracker(options));
         }
     }
 
 
+    /**
+     * 
+     * @param logData 
+     */
     log(logData: any) {
         logData.logType || (logData.logType = 'GENERAL');
 
         return this.emitData(logData);
     }
 
+    /**
+     * 
+     * @param severity 
+     * @param what 
+     * @param subject 
+     * @param status 
+     * @param who 
+     * @param where 
+     * @param why 
+     * @param type 
+     * @param meta 
+     */
     logEvent(severity: string,
         what: string,
         subject: string,
@@ -46,8 +65,11 @@ class Audit {
         return this.emitData(eventPackage);
     }
 
+    /**
+     * 
+     * @param dataObject 
+     */
     emitData(dataObject: any) {
-        console.log('_tracers', _tracers)
         async.forEach(_tracers, function (tracer: any, cb: any) {
             tracer.emit(dataObject);
             cb(null);
