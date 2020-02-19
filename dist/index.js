@@ -6,24 +6,46 @@ var _tracers = [];
 var Audit = /** @class */ (function () {
     function Audit() {
     }
+    /**
+     *
+     * @param tracer
+     * @param options
+     */
     Audit.prototype.addTracer = function (tracer, options) {
         options = options || {};
-        // let myTrack = require('./audit/tracer/' + tracer);
-        // var MongooseTracker = require(`./audit/tracer/${tracer}`)
-        if (tracer) {
+        if (tracer == 'mongoose') {
             _tracers.push(new mongoose_1.default(options));
         }
     };
+    /**
+     *
+     * @param logData
+     */
     Audit.prototype.log = function (logData) {
         logData.logType || (logData.logType = 'GENERAL');
         return this.emitData(logData);
     };
+    /**
+     *
+     * @param severity
+     * @param what
+     * @param subject
+     * @param status
+     * @param who
+     * @param where
+     * @param why
+     * @param type
+     * @param meta
+     */
     Audit.prototype.logEvent = function (severity, what, subject, status, who, where, why, type, meta) {
         var eventPackage = this.generalizeData(severity, what, subject, status, who, where, why, type, meta);
         return this.emitData(eventPackage);
     };
+    /**
+     *
+     * @param dataObject
+     */
     Audit.prototype.emitData = function (dataObject) {
-        console.log('_tracers', _tracers);
         async.forEach(_tracers, function (tracer, cb) {
             tracer.emit(dataObject);
             cb(null);

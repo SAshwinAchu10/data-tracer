@@ -64,8 +64,8 @@ import Audit from 'data-tracer';
     
 ### Examples
  * [Typescript Example](https://github.com/SAshwinAchu10/data-tracer/tree/master/examples/typescript)
- * [ReactJS Example](https://github.com/SAshwinAchu10/data-tracer/tree/master/examples/react)
- * [Javascript Example](https://github.com/SAshwinAchu10/data-tracer/tree/master/examples/javascript) - WIP
+ * [ReactJS Example](https://github.com/SAshwinAchu10/data-tracer/tree/master/examples/react) - WIP
+ * [Javascript Example](https://github.com/SAshwinAchu10/data-tracer/tree/master/examples/javascript)
 
 
  ### Screenshot

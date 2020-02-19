@@ -29,6 +29,10 @@ var MongooseTracker = /** @class */ (function () {
         this._connection = mongoose.createConnection(this._options.connectionString);
         this.model = this._connection.model(this._options.collectionName, modelSchema);
     }
+    /**
+     *
+     * @param dataObject
+     */
     MongooseTracker.prototype.emit = function (dataObject) {
         console.error('emit: ' + util.inspect(dataObject));
         if (dataObject) {

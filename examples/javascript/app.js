@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // initializing tracer
-Audit.addTracer('mongoose', { connectionString: 'mongodb://localhost:27017/ashwin' })
+Audit.default.addTracer('mongoose', { connectionString: 'mongodb://localhost:27017/ashwin' })
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -20,7 +20,7 @@ app.use(function (req, res, next) {
 
 app.get('/ping', function (req, res) {
 
-    Audit.logEvent(
+    Audit.default.logEvent(
         'INFO',
         'Ping',
         'api was triggered',

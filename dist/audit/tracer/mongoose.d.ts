@@ -10,6 +10,10 @@ declare class MongooseTracker {
         connectionString: string;
     };
     constructor(options: any);
+    /**
+     *
+     * @param dataObject
+     */
     emit(dataObject: any): void;
 }
 export default MongooseTracker;
