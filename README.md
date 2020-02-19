@@ -12,7 +12,7 @@ $ npm i data-tracer
 ##### Instantiate
 
 ```javascript
-Audit.addTracer('mongoose', { connectionString: 'mongodb://localhost:27017/ashwin' });
+Audit.addTracer('mongoose', { connectionString: 'mongodb://localhost:27017/db' });
 ```
 
 ##### Import 
@@ -72,3 +72,13 @@ let Audit = require('data-tracer');
 
 
 [![N|Solid](https://github.com/SAshwinAchu10/data-tracer/blob/master/docs/1.png)](https://github.com/SAshwinAchu10/data-tracer/blob/master/docs/1.png)
+
+
+
+### Roadmap [WIP]
+
+ * Local file logging
+ * Dashboard UI
+ * QL for filtering Audit Events, Logs
+ * Plugins like console, authorization etc.
+ * etc...

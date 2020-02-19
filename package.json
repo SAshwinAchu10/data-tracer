@@ -1,23 +1,29 @@
 {
   "name": "data-tracer",
   "description": "Event tracer, Logger and more WIP",
-  "version": "0.0.6",
+  "version": "0.0.23",
   "keywords": [
     "node",
     "logger",
     "audit"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "npm run clean && npm run build && npm publish --access public",
+    "build": "tsc -p .",
+    "clean": "rm -rf dist/"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SAshwinAchu10/data-tracer.git"
   },
   "author": "Ashwin <achu10@live.in>",
-  "main": "index",
+  "main": "dist/index",
+  "typings": "dist/index",
   "dependencies": {
-    "async": "0.1.22"
+    "@types/node": "^13.7.2",
+    "async": "^0.1.22",
+    "mongoose": "^5.9.1"
   },
   "engines": {
     "node": "*"
@@ -29,5 +35,9 @@
   "directories": {
     "lib": "lib"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/async": "^3.0.8",
+    "@types/mongoose": "^5.7.1"
+  }
 }
