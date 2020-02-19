@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 import * as bodyParser from 'body-parser';
 import * as helmet from 'helmet';
 import * as cors from 'cors';
-import Audit from 'data-tracer';
+import { Audit, DataTracer} from 'data-tracer';
 
 
 const port = process.env.PORT || 3000;
@@ -15,6 +15,15 @@ app.use(bodyParser.json());
 
 Audit.addTracer('mongoose', { connectionString: 'mongodb://localhost:27017/db' })
 
+
+DataTracer.configureAlert({
+    'apiKey': 'abcdefghijklmnopqrstuvwxyz',
+    'provider': 'sendgrid',
+    'subject': `Error from ${'APP_NAME'}`,
+    'from': 'achu10@live.in',
+    'mailTo': 'achu10@live.in',
+    'type': ['SEVERE'] 
+});
 
 app.use(
     '/',
