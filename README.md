@@ -63,9 +63,9 @@ let Audit = require('data-tracer');
 ----------
     
 ### Examples
- * [Javascript Example](https://github.com/SAshwinAchu10/data-tracer/tree/master/examples/javascript) 
  * [Typescript Example](https://github.com/SAshwinAchu10/data-tracer/tree/master/examples/typescript)
  * [ReactJS Example](https://github.com/SAshwinAchu10/data-tracer/tree/master/examples/react)
+ * [Javascript Example](https://github.com/SAshwinAchu10/data-tracer/tree/master/examples/javascript) - WIP
 
 
  ### Screenshot
