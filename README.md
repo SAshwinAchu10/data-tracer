@@ -81,4 +81,7 @@ import Audit from 'data-tracer';
  * Dashboard UI
  * QL for filtering Audit Events, Logs
  * Plugins like console, authorization etc.
+ * ELK Integration
+ * Monitoring
+ * Tracing
  * etc...
