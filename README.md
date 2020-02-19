@@ -17,7 +17,7 @@ Audit.addTracer('mongoose', { connectionString: 'mongodb://localhost:27017/db' }
 
 ##### Import 
 ```javascript
-let Audit = require('data-tracer');
+import Audit from 'data-tracer';
 ```
 
 ##### Sample usage
