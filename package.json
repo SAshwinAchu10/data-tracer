@@ -21,6 +21,7 @@
   "main": "dist/index",
   "typings": "dist/index",
   "dependencies": {
+    "@sendgrid/mail": "^6.5.2",
     "@types/node": "^13.7.2",
     "async": "^0.1.22",
     "mongoose": "^5.9.1"

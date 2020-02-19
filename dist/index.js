@@ -2,16 +2,19 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var async = require("async");
 var mongoose_1 = require("./audit/tracer/mongoose");
+var alert_1 = require("./audit/tracer/alert");
 var _tracers = [];
-var Audit = /** @class */ (function () {
-    function Audit() {
+var _notifiy = [];
+var sendAlerts = false;
+var Audits = /** @class */ (function () {
+    function Audits() {
     }
     /**
      *
      * @param tracer
      * @param options
      */
-    Audit.prototype.addTracer = function (tracer, options) {
+    Audits.prototype.addTracer = function (tracer, options) {
         options = options || {};
         if (tracer == 'mongoose') {
             _tracers.push(new mongoose_1.default(options));
@@ -21,7 +24,7 @@ var Audit = /** @class */ (function () {
      *
      * @param logData
      */
-    Audit.prototype.log = function (logData) {
+    Audits.prototype.log = function (logData) {
         logData.logType || (logData.logType = 'GENERAL');
         return this.emitData(logData);
     };
@@ -37,7 +40,7 @@ var Audit = /** @class */ (function () {
      * @param type
      * @param meta
      */
-    Audit.prototype.logEvent = function (severity, what, subject, status, who, where, why, type, meta) {
+    Audits.prototype.logEvent = function (severity, what, subject, status, who, where, why, type, meta) {
         var eventPackage = this.generalizeData(severity, what, subject, status, who, where, why, type, meta);
         return this.emitData(eventPackage);
     };
@@ -45,15 +48,17 @@ var Audit = /** @class */ (function () {
      *
      * @param dataObject
      */
-    Audit.prototype.emitData = function (dataObject) {
+    Audits.prototype.emitData = function (dataObject) {
         async.forEach(_tracers, function (tracer, cb) {
+            if (sendAlerts)
+                DataTracer.emit(dataObject);
             tracer.emit(dataObject);
             cb(null);
         }, function (err) {
             return true;
         });
     };
-    Audit.prototype.generalizeData = function (severity, what, subject, status, who, where, why, type, meta) {
+    Audits.prototype.generalizeData = function (severity, what, subject, status, who, where, why, type, meta) {
         return {
             what: what != undefined ? what : '-',
             where: where != undefined ? where : '-',
@@ -66,6 +71,27 @@ var Audit = /** @class */ (function () {
             meta: meta != undefined ? meta : {},
         };
     };
-    return Audit;
+    return Audits;
 }());
-exports.default = new Audit();
+var DataTracers = /** @class */ (function () {
+    function DataTracers() {
+    }
+    DataTracers.prototype.configureAlert = function (options) {
+        if (options) {
+            sendAlerts = true;
+            _notifiy.push(new alert_1.default(options));
+        }
+    };
+    DataTracers.prototype.emit = function (dataObject) {
+        async.forEach(_notifiy, function (_notifier, cb) {
+            _notifier.emit(dataObject);
+            cb(null);
+        }, function (err) {
+            return true;
+        });
+    };
+    return DataTracers;
+}());
+var Audit = new Audits();
+var DataTracer = new DataTracers();
+exports.default = { Audit: Audit, DataTracer: DataTracer };

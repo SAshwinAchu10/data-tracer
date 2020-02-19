@@ -1,4 +1,4 @@
-declare class Audit {
+declare class Audits {
     /**
      *
      * @param tracer
@@ -40,5 +40,21 @@ declare class Audit {
         meta: any;
     };
 }
-declare const _default: Audit;
+interface DataTracerOptions {
+    apiKey: string;
+    provider: string;
+    type: string;
+    severity: string;
+    mailTo: string;
+    from: string;
+    subject: string;
+}
+declare class DataTracers {
+    configureAlert(options: DataTracerOptions): void;
+    emit(dataObject: any): void;
+}
+declare const _default: {
+    Audit: Audits;
+    DataTracer: DataTracers;
+};
 export default _default;

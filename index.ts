@@ -1,10 +1,12 @@
 import * as async from 'async';
 import MongooseTracker from './audit/tracer/mongoose'
+import Alert from './audit/tracer/alert'
 
 let _tracers: any = [];
+let _notifiy: any = [];
+let sendAlerts: boolean = false;
 
-
-class Audit {
+class Audits {
 
     /**
      * 
@@ -71,6 +73,7 @@ class Audit {
      */
     emitData(dataObject: any) {
         async.forEach(_tracers, function (tracer: any, cb: any) {
+            if (sendAlerts) DataTracer.emit(dataObject);
             tracer.emit(dataObject);
             cb(null);
         }, function (err: any) {
@@ -102,5 +105,35 @@ class Audit {
 
 }
 
+interface DataTracerOptions {
+    apiKey: string,
+    provider: string,
+    type: string,
+    severity: string,
+    mailTo: string,
+    from: string,
+    subject: string
+}
 
-export default new Audit();
+class DataTracers {
+
+    configureAlert(options: DataTracerOptions) {
+        if (options) {
+            sendAlerts = true;
+            _notifiy.push(new Alert(options))
+        }
+    }
+
+    emit(dataObject: any) {
+        async.forEach(_notifiy, function (_notifier: any, cb: any) {
+            _notifier.emit(dataObject);
+            cb(null);
+        }, function (err: any) {
+            return true;
+        });
+    }
+}
+
+let Audit = new Audits();
+let DataTracer = new DataTracers();
+export default { Audit, DataTracer };

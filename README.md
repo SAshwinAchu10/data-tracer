@@ -9,15 +9,30 @@
 $ npm i data-tracer
 ```
 
-##### Instantiate
+
+##### Import 
+```javascript
+import { Audit, DataTracer } from 'data-tracer';
+```
+
+
+##### Instantiate Tracer
 
 ```javascript
 Audit.addTracer('mongoose', { connectionString: 'mongodb://localhost:27017/db' });
 ```
 
-##### Import 
+##### Instantiate Mail Alerts  (Optional)
+
 ```javascript
-import Audit from 'data-tracer';
+DataTracer.configureAlert({
+    'apiKey': 'abcdefghijklmnopqrstuvwxyz',
+    'provider': 'sendgrid',
+    'subject': `Error from ${APP_NAME}`,
+    'from': 'achu10@live.in',
+    'mailTo': 'achu10@live.in',
+    'type': ['SEVERE']  // Severity types to trigger email
+});
 ```
 
 ##### Sample usage

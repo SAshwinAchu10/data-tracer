@@ -43,8 +43,6 @@ class MongooseTracker {
      * @param dataObject 
      */
     emit(dataObject: any) {
-        console.error('emit: ' + util.inspect(dataObject));
-
         if (dataObject) {
             let newEvent = new this.model(dataObject);
             newEvent.save(function (err: any) {
