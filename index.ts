@@ -1,5 +1,6 @@
 import * as async from 'async';
 import MongooseTracker from './audit/tracer/mongoose'
+import MySQLTracker from './audit/tracer/mysql'
 import Alert from './audit/tracer/alert'
 
 let _tracers: any = [];
@@ -18,6 +19,9 @@ class Audits {
 
         if (tracer == 'mongoose') {
             _tracers.push(new MongooseTracker(options));
+        }
+        else if (tracer == 'mysql') {
+            _tracers.push(new MySQLTracker(options));
         }
     }
 

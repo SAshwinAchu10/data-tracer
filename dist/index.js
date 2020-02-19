@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var async = require("async");
 var mongoose_1 = require("./audit/tracer/mongoose");
+var mysql_1 = require("./audit/tracer/mysql");
 var alert_1 = require("./audit/tracer/alert");
 var _tracers = [];
 var _notifiy = [];
@@ -18,6 +19,9 @@ var Audits = /** @class */ (function () {
         options = options || {};
         if (tracer == 'mongoose') {
             _tracers.push(new mongoose_1.default(options));
+        }
+        else if (tracer == 'mysql') {
+            _tracers.push(new mysql_1.default(options));
         }
     };
     /**

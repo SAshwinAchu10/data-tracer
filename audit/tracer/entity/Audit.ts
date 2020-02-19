@@ -1,34 +1,28 @@
-export default {
-    name: "Audit",
-    columns: {
-        id: {
-            primary: true,
-            type: "int",
-            generated: true
-        },
-        what: {
-            type: "varchar"
-        },
-        why: {
-            type: "varchar"
-        },
-        where: {
-            type: "varchar"
-        },
-        subject: {
-            type: "varchar"
-        },
-        severity: {
-            type: "varchar"
-        },
-        type: {
-            type: "varchar"
-        },
-        when: {
-            type: "varchar"
-        },
-        meta: {
-            type: "varchar"
-        }
-    }
-};
+import { Column, Entity } from "typeorm";
+import { PrimaryColumn } from "typeorm";
+import { Generated } from "typeorm";
+
+@Entity("audits")
+export default class Audit {
+
+    @PrimaryColumn("integer")
+    @Generated()
+    id: number;
+
+    @Column()
+    why: string;
+    @Column()
+    where: string;
+    @Column()
+    what: string;
+    @Column()
+    when: string;
+    @Column()
+    severity: string;
+    @Column()
+    type: string;
+    @Column()
+    subject: string;
+    @Column()
+    meta: string;
+}

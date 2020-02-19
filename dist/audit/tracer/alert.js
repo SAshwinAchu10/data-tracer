@@ -12,8 +12,6 @@ var Alert = /** @class */ (function () {
     Alert.prototype.emit = function (dataObject) {
         if (dataObject.severity.includes(this.options.type)) {
             if (this.options.provider == 'sendgrid') {
-                console.log('thi', this.options);
-                console.log('thi', this.options.mailTo);
                 mail.setApiKey(this.options.apiKey);
                 var msg = {
                     to: this.options.mailTo,

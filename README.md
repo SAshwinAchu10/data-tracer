@@ -18,8 +18,15 @@ import { Audit, DataTracer } from 'data-tracer';
 
 ##### Instantiate Tracer
 
+#### Mongoose
 ```javascript
 Audit.addTracer('mongoose', { connectionString: 'mongodb://localhost:27017/db' });
+```
+
+#### MySQL
+
+```javascript
+Audit.addTracer('mysql', { host: 'localhost', user: 'root', 'password': 'root', database: 'myDB' });
 ```
 
 ##### Instantiate Mail Alerts  (Optional)

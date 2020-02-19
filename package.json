@@ -1,7 +1,7 @@
 {
   "name": "data-tracer",
   "description": "Event tracer, Logger and more WIP",
-  "version": "0.0.25",
+  "version": "0.2.0",
   "keywords": [
     "node",
     "logger",
@@ -24,7 +24,8 @@
     "@sendgrid/mail": "^6.5.2",
     "@types/node": "^13.7.2",
     "async": "^0.1.22",
-    "mongoose": "^5.9.1"
+    "mongoose": "^5.9.1",
+    "typeorm": "^0.2.22"
   },
   "engines": {
     "node": "*"

@@ -1,35 +1,11 @@
-declare const _default: {
-    name: string;
-    columns: {
-        id: {
-            primary: boolean;
-            type: string;
-            generated: boolean;
-        };
-        what: {
-            type: string;
-        };
-        why: {
-            type: string;
-        };
-        where: {
-            type: string;
-        };
-        subject: {
-            type: string;
-        };
-        severity: {
-            type: string;
-        };
-        type: {
-            type: string;
-        };
-        when: {
-            type: string;
-        };
-        meta: {
-            type: string;
-        };
-    };
-};
-export default _default;
+export default class Audit {
+    id: number;
+    why: string;
+    where: string;
+    what: string;
+    when: string;
+    severity: string;
+    type: string;
+    subject: string;
+    meta: string;
+}

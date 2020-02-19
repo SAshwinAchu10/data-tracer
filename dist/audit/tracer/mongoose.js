@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose_1 = require("mongoose");
 var mongoose = require("mongoose");
-var util = require("util");
 /**
  *
  */
@@ -34,7 +33,6 @@ var MongooseTracker = /** @class */ (function () {
      * @param dataObject
      */
     MongooseTracker.prototype.emit = function (dataObject) {
-        console.error('emit: ' + util.inspect(dataObject));
         if (dataObject) {
             var newEvent = new this.model(dataObject);
             newEvent.save(function (err) {
