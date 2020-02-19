@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 import * as bodyParser from 'body-parser';
 import * as helmet from 'helmet';
 import * as cors from 'cors';
-let Audit = require('data-tracer')
+import Audit from 'data-tracer';
 
 
 const port = process.env.PORT || 3000;
@@ -13,7 +13,7 @@ app.use(cors());
 app.use(helmet());
 app.use(bodyParser.json());
 
-Audit.addTracer('mongoose', { connectionString: 'mongodb://localhost:27017/ashwin' })
+Audit.addTracer('mongoose', { connectionString: 'mongodb://localhost:27017/db' })
 
 
 app.use(
