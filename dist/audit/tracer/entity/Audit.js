@@ -6,6 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+require("reflect-metadata");
 var typeorm_1 = require("typeorm");
 var typeorm_2 = require("typeorm");
 var typeorm_3 = require("typeorm");
@@ -17,28 +18,28 @@ var Audit = /** @class */ (function () {
         typeorm_3.Generated()
     ], Audit.prototype, "id", void 0);
     __decorate([
-        typeorm_1.Column()
+        typeorm_1.Column('text', { nullable: true })
     ], Audit.prototype, "why", void 0);
     __decorate([
-        typeorm_1.Column()
+        typeorm_1.Column('text', { nullable: true })
     ], Audit.prototype, "where", void 0);
     __decorate([
-        typeorm_1.Column()
+        typeorm_1.Column('text', { nullable: true })
     ], Audit.prototype, "what", void 0);
     __decorate([
-        typeorm_1.Column()
+        typeorm_1.Column('text', { nullable: true })
     ], Audit.prototype, "when", void 0);
     __decorate([
-        typeorm_1.Column()
+        typeorm_1.Column('text', { nullable: true })
     ], Audit.prototype, "severity", void 0);
     __decorate([
-        typeorm_1.Column()
+        typeorm_1.Column('text', { nullable: true })
     ], Audit.prototype, "type", void 0);
     __decorate([
-        typeorm_1.Column()
+        typeorm_1.Column('text', { nullable: true })
     ], Audit.prototype, "subject", void 0);
     __decorate([
-        typeorm_1.Column()
+        typeorm_1.Column('text', { nullable: true })
     ], Audit.prototype, "meta", void 0);
     Audit = __decorate([
         typeorm_1.Entity("audits")

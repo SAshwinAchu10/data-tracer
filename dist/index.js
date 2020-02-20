@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+require("reflect-metadata");
 var async = require("async");
 var mongoose_1 = require("./audit/tracer/mongoose");
 var mysql_1 = require("./audit/tracer/mysql");
@@ -97,5 +98,6 @@ var DataTracers = /** @class */ (function () {
     return DataTracers;
 }());
 var Audit = new Audits();
+exports.Audit = Audit;
 var DataTracer = new DataTracers();
-exports.default = { Audit: Audit, DataTracer: DataTracer };
+exports.DataTracer = DataTracer;

@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 declare class Audits {
     /**
      *
@@ -53,8 +54,6 @@ declare class DataTracers {
     configureAlert(options: DataTracerOptions): void;
     emit(dataObject: any): void;
 }
-declare const _default: {
-    Audit: Audits;
-    DataTracer: DataTracers;
-};
-export default _default;
+declare let Audit: Audits;
+declare let DataTracer: DataTracers;
+export { Audit, DataTracer };

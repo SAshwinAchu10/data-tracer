@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import * as async from 'async';
 import MongooseTracker from './audit/tracer/mongoose'
 import MySQLTracker from './audit/tracer/mysql'
@@ -140,4 +141,7 @@ class DataTracers {
 
 let Audit = new Audits();
 let DataTracer = new DataTracers();
-export default { Audit, DataTracer };
+export {
+    Audit,
+    DataTracer
+}
