@@ -1,6 +1,5 @@
 import { Schema } from 'mongoose';
 import * as mongoose from 'mongoose';
-import * as util from 'util';
 
 /**
  * 
@@ -10,7 +9,7 @@ class MongooseTracker {
     model: any;
     _connection: any;
     options: any;
-    _options = { collectionName: 'audit', connectionString: '' };
+    _options = { collectionName: 'audit', connectionString: '', appName: 'DEFAULT' };
 
     constructor(options: any) {
         this.options = options;
@@ -26,10 +25,14 @@ class MongooseTracker {
             why: { type: String },
             who: { type: String, default: 'Anonymous User' },
             subject: { type: String },
-            severity: { type: String, default: 'INFO' },
+            is: { type: String },
+            resolved: { type: Boolean, default: false },
+            type: { type: String, default: 'INFO' },
             status: { type: String, default: 'UNKNOWN' },
             meta: { type: Object },
-            createdAt: { type: String, default: new Date().toString() }
+            when: { type: String, default: new Date().toString() },
+            appName: { type: String, default: this._options.appName },
+            createdAt: { type: Date, default: new Date() }
         });
         this._connection = mongoose.createConnection(this._options.connectionString)
 
@@ -50,6 +53,27 @@ class MongooseTracker {
             });
         }
     }
+
+    async executeAggreagteQuery(query: any) {
+        return this.model.aggregate(query).exec()
+            .then(
+                async (result: any): Promise<any> => {
+                    return result;
+                },
+            )
+            .catch((error: any): Promise<any> => error);
+    }
+
+    async executeResolveQuery(id: string) {
+        return this.model.update({ _id: id }, { $set: { resolved: true } }).exec()
+            .then(
+                async (result: any): Promise<any> => {
+                    return result;
+                },
+            )
+            .catch((error: any): Promise<any> => error);
+    }
+
 
 }
 export default MongooseTracker;

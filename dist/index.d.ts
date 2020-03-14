@@ -6,6 +6,8 @@ declare class Audits {
      * @param options
      */
     addTracer(tracer: any, options: any): void;
+    aggregate(query: any): Promise<any>;
+    resolve(id: string): Promise<any>;
     /**
      *
      * @param logData
@@ -23,21 +25,21 @@ declare class Audits {
      * @param type
      * @param meta
      */
-    logEvent(severity: string, what: string, subject: string, status: string, who: string, where: string, why: string, type: string, meta: any): void;
+    logEvent(type: string, what: string, subject: string, status: string, who: string, where: string, why: string, is: string, meta: any): void;
     /**
      *
      * @param dataObject
      */
     emitData(dataObject: any): void;
-    generalizeData(severity: string, what: string, subject: string, status: string, who: string, where: string, why: string, type: string, meta: any): {
+    generalizeData(type: string, what: string, subject: string, status: string, who: string, where: string, why: string, is: string, meta: any): {
         what: string;
         where: string;
         why: string;
         who: string;
         subject: string;
-        severity: string;
-        status: string;
         type: string;
+        status: string;
+        is: string;
         meta: any;
     };
 }

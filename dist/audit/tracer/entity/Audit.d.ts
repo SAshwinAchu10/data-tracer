@@ -9,4 +9,6 @@ export default class Audit {
     type: string;
     subject: string;
     meta: string;
+    who: string;
+    status: string;
 }

@@ -25,4 +25,8 @@ export default class Audit {
     subject: string;
     @Column('text',{nullable:true})
     meta: string;
+    @Column('text',{nullable:true})
+    who: string;
+    @Column('text',{nullable:true})
+    status: string;
 }

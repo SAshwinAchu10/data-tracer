@@ -8,6 +8,7 @@ declare class MongooseTracker {
     _options: {
         collectionName: string;
         connectionString: string;
+        appName: string;
     };
     constructor(options: any);
     /**
@@ -15,5 +16,7 @@ declare class MongooseTracker {
      * @param dataObject
      */
     emit(dataObject: any): void;
+    executeAggreagteQuery(query: any): Promise<any>;
+    executeResolveQuery(id: string): Promise<any>;
 }
 export default MongooseTracker;

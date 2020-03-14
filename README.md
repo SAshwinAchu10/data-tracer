@@ -20,8 +20,60 @@ import { Audit, DataTracer } from 'data-tracer';
 
 #### Mongoose
 ```javascript
-Audit.addTracer('mongoose', { connectionString: 'mongodb://localhost:27017/db' });
+Audit.addTracer('mongoose', { connectionString: 'mongodb://localhost:27017/db', appName: 'Apple-Rest' });
 ```
+
+
+#### Mongo Aggregation Query
+```javascript
+import { Audit } from 'data-tracer';
+
+
+app.get('/audits', async (req: any, res: any) => {
+      let query: any = req.query;
+      if (query['page'] == undefined) query['page'] = 1;
+      if (query['limit'] == undefined) query['limit'] = 10;
+      let q: any =
+        query['q'] == undefined
+          ? [{}]
+          : [
+            { when: { $regex: `${query['q']}`, $options: 'i' } },
+            { what: { $regex: `${query['q']}`, $options: 'i' } },
+            { type: { $regex: `${query['q']}`, $options: 'i' } },
+            { where: { $regex: `${query['q']}`, $options: 'i' } },
+            { why: { $regex: `${query['q']}`, $options: 'i' } },
+          ];
+      return Audit.aggregate([
+        {
+          $facet: {
+            audits: [
+              {
+                $match: {
+                  type: { $in: JSON.parse(query['type']) },
+                  createdAt: {
+                    $gte: new Date(query['startDate']),
+                    $lte: new Date(query['endDate']),
+                  },
+                  $or: JSON.parse(JSON.stringify(q)),
+                },
+              },
+              { $limit: parseInt(query['limit']) },
+              { $skip: (query['page'] - 1) * query['limit'] },
+            ],
+            apps: [
+              {
+                $group: {
+                  _id: null,
+                  apps: { $addToSet: "$appName" }
+                }
+              }, { "$unset": ["_id"] }
+            ]
+          },
+        },
+      ]).then((result: any) => res.json({ data: result }));
+    });
+```
+
 
 #### MySQL
 
@@ -48,14 +100,14 @@ DataTracer.configureAlert({
 
 ```javascript
     Audit.logEvent(
-        severity,
+        type,
         what,
         subject,
         status,
         who,
         where,
         why,
-        type,
+        is,
         meta
     );
 ```

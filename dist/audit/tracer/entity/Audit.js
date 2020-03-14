@@ -41,6 +41,12 @@ var Audit = /** @class */ (function () {
     __decorate([
         typeorm_1.Column('text', { nullable: true })
     ], Audit.prototype, "meta", void 0);
+    __decorate([
+        typeorm_1.Column('text', { nullable: true })
+    ], Audit.prototype, "who", void 0);
+    __decorate([
+        typeorm_1.Column('text', { nullable: true })
+    ], Audit.prototype, "status", void 0);
     Audit = __decorate([
         typeorm_1.Entity("audits")
     ], Audit);

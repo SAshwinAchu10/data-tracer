@@ -7,6 +7,8 @@ import Alert from './audit/tracer/alert'
 let _tracers: any = [];
 let _notifiy: any = [];
 let sendAlerts: boolean = false;
+let _options = {}
+let _tracer = undefined;
 
 class Audits {
 
@@ -17,12 +19,32 @@ class Audits {
      */
     addTracer(tracer: any, options: any) {
         options = options || {};
+        _options = options;
+        _tracer = tracer;
 
         if (tracer == 'mongoose') {
             _tracers.push(new MongooseTracker(options));
         }
         else if (tracer == 'mysql') {
             _tracers.push(new MySQLTracker(options));
+        }
+    }
+
+    async aggregate(query: any) {
+        if (_tracer == 'mongoose') {
+            let MT = new MongooseTracker(_options);
+            return MT.executeAggreagteQuery(query).then((response: any) => response)
+        } else {
+            return { message: 'Support to MySQL is not supported yet' }
+        }
+    }
+
+    async resolve(id: string) {
+        if (_tracer == 'mongoose') {
+            let MT = new MongooseTracker(_options);
+            return MT.executeResolveQuery(id).then((response: any) => response)
+        } else {
+            return { message: 'Support to MySQL is not supported yet' }
         }
     }
 
@@ -49,24 +71,24 @@ class Audits {
      * @param type 
      * @param meta 
      */
-    logEvent(severity: string,
+    logEvent(type: string,
         what: string,
         subject: string,
         status: string,
         who: string,
         where: string,
         why: string,
-        type: string,
+        is: string,
         meta: any) {
 
-        let eventPackage = this.generalizeData(severity,
+        let eventPackage = this.generalizeData(type,
             what,
             subject,
             status,
             who,
             where,
             why,
-            type,
+            is,
             meta);
 
         return this.emitData(eventPackage);
@@ -86,14 +108,14 @@ class Audits {
         });
     }
 
-    generalizeData(severity: string,
+    generalizeData(type: string,
         what: string,
         subject: string,
         status: string,
         who: string,
         where: string,
         why: string,
-        type: string,
+        is: string,
         meta: any) {
         return {
             what: what != undefined ? what : '-',
@@ -101,9 +123,9 @@ class Audits {
             why: why != undefined ? why : '-',
             who: who != undefined ? who : 'Anonymous User',
             subject: subject != undefined ? subject : '-',
-            severity: severity != undefined ? severity : 'INFO',
+            type: type != undefined ? type : 'INFO',
             status: status != undefined ? status : 'UNKNOWN',
-            type: type != undefined ? type : 'EVENT',
+            is: is != undefined ? is : 'EVENT',
             meta: meta != undefined ? meta : {},
         };
     }
