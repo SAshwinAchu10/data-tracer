@@ -27,6 +27,9 @@
     "mongoose": "^5.9.1",
     "typeorm": "^0.2.22"
   },
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com"
+  },
   "engines": {
     "node": "*"
   },
