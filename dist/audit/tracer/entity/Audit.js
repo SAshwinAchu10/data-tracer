@@ -14,41 +14,41 @@ var Audit = /** @class */ (function () {
     function Audit() {
     }
     __decorate([
-        typeorm_2.PrimaryColumn("integer"),
-        typeorm_3.Generated()
+        (0, typeorm_2.PrimaryColumn)("integer"),
+        (0, typeorm_3.Generated)()
     ], Audit.prototype, "id", void 0);
     __decorate([
-        typeorm_1.Column('text', { nullable: true })
+        (0, typeorm_1.Column)('text', { nullable: true })
     ], Audit.prototype, "why", void 0);
     __decorate([
-        typeorm_1.Column('text', { nullable: true })
+        (0, typeorm_1.Column)('text', { nullable: true })
     ], Audit.prototype, "where", void 0);
     __decorate([
-        typeorm_1.Column('text', { nullable: true })
+        (0, typeorm_1.Column)('text', { nullable: true })
     ], Audit.prototype, "what", void 0);
     __decorate([
-        typeorm_1.Column('text', { nullable: true })
+        (0, typeorm_1.Column)('text', { nullable: true })
     ], Audit.prototype, "when", void 0);
     __decorate([
-        typeorm_1.Column('text', { nullable: true })
+        (0, typeorm_1.Column)('text', { nullable: true })
     ], Audit.prototype, "severity", void 0);
     __decorate([
-        typeorm_1.Column('text', { nullable: true })
+        (0, typeorm_1.Column)('text', { nullable: true })
     ], Audit.prototype, "type", void 0);
     __decorate([
-        typeorm_1.Column('text', { nullable: true })
+        (0, typeorm_1.Column)('text', { nullable: true })
     ], Audit.prototype, "subject", void 0);
     __decorate([
-        typeorm_1.Column('text', { nullable: true })
+        (0, typeorm_1.Column)('text', { nullable: true })
     ], Audit.prototype, "meta", void 0);
     __decorate([
-        typeorm_1.Column('text', { nullable: true })
+        (0, typeorm_1.Column)('text', { nullable: true })
     ], Audit.prototype, "who", void 0);
     __decorate([
-        typeorm_1.Column('text', { nullable: true })
+        (0, typeorm_1.Column)('text', { nullable: true })
     ], Audit.prototype, "status", void 0);
     Audit = __decorate([
-        typeorm_1.Entity("audits")
+        (0, typeorm_1.Entity)("audits")
     ], Audit);
     return Audit;
 }());

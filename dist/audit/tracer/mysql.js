@@ -7,7 +7,7 @@ var Audit_1 = require("./entity/Audit");
  */
 var MySQLTracker = /** @class */ (function () {
     function MySQLTracker(options) {
-        this._connection = typeorm_1.createConnection({
+        this._connection = (0, typeorm_1.createConnection)({
             type: "mysql",
             host: options.host,
             port: 3306,
@@ -27,7 +27,7 @@ var MySQLTracker = /** @class */ (function () {
     }
     MySQLTracker.prototype.emit = function (dataObject) {
         if (dataObject) {
-            typeorm_1.getConnection().manager.query('insert into audits set ?', dataObject)
+            (0, typeorm_1.getConnection)().manager.query('insert into audits set ?', dataObject)
                 .then(function (results) {
                 console.log("reesss", results);
             });

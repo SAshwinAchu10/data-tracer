@@ -1,7 +1,7 @@
 {
   "name": "data-tracer",
   "description": "Event tracer, Logger and more WIP",
-  "version": "0.2.24",
+  "version": "0.2.26",
   "keywords": [
     "node",
     "logger",

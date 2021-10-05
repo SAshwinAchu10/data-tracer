@@ -36,6 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.DataTracer = exports.Audit = void 0;
 require("reflect-metadata");
 var async = require("async");
 var mongoose_1 = require("./audit/tracer/mongoose");
