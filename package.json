@@ -23,7 +23,7 @@
   "dependencies": {
     "@sendgrid/mail": "^6.5.2",
     "@types/node": "^13.7.2",
-    "async": "^0.1.22",
+    "async": "^2.6.4",
     "mongoose": "^5.9.1",
     "typeorm": "^0.2.22"
   },
